@@ -3,9 +3,9 @@ using Microsoft.JSInterop;
 using System.Text;
 
 
-namespace SignaturePad
+namespace AZSignaturePad
 {
-    public partial class SignaturePad
+    public partial class SignaturePad:ComponentBase,IAsyncDisposable
     {
         [Parameter]
         public byte[] Value
@@ -13,14 +13,31 @@ namespace SignaturePad
             get => _value;
             set
             {
-                if(value == _value) return;
+                if (value == _value) return;
 
                 _value = value;
                 UpdateImage();
             }
         }
+
+        
+
+
         [Parameter]
         public EventCallback<byte[]> ValueChanged { get; set; }
+
+ 
+               [Parameter]
+        public EventCallback<byte[]> SuredCallback { get; set; }
+
+ 
+
+         [Parameter]
+        public EventCallback ClearedCallback { get; set; }
+
+ 
+
+
         [Parameter] public SignaturePadOptions Options { get; set; } = new SignaturePadOptions();
 
         private string _id = Guid.NewGuid().ToString();
@@ -28,6 +45,10 @@ namespace SignaturePad
         private IJSObjectReference? jsModule;
         private bool _rendered = false;
         private byte[] _value = Array.Empty<byte>();
+
+
+         [Parameter] public string BtnSureStyle {get;set;}
+         [Parameter] public string BtnClearStyle {get;set; }
 
         public SignaturePad()
         {
@@ -62,7 +83,7 @@ namespace SignaturePad
         {
             if (firstRender)
             {
-                jsModule = await jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Blazor.SignaturePad/sigpad.interop.js");
+                jsModule = await jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/AZ.Blazor.AZSignaturePad/sigpad.interop.js");
                 await Setup();
             }
 
@@ -134,7 +155,17 @@ namespace SignaturePad
                 Value = Array.Empty<byte>();
                 await ValueChanged.InvokeAsync(Value);
                 await UpdateImage();
+                await ClearedCallback.InvokeAsync();
+
+            
             }
+        }
+
+        public async Task Sure()
+        {
+
+             
+
         }
     }
 }

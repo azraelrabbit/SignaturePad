@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SignaturePad\SignaturePad.csproj" />
+    <ProjectReference Include="..\SignaturePad\AZSignaturePad.csproj" />
   </ItemGroup>
 
 </Project>

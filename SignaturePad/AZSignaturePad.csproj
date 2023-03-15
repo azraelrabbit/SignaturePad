@@ -12,7 +12,8 @@
 		<PackageTags>unterschrift, signature</PackageTags>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<Title>SignaturePad</Title>
-		<PackageId>Blazor.$(AssemblyName)</PackageId>
+		<PackageId>AZ.Blazor.$(AssemblyName)</PackageId>
+		<AssemblyName>$(MSBuildProjectName)</AssemblyName>
 	</PropertyGroup>
 
 

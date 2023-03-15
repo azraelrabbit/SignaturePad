@@ -5,7 +5,34 @@
 }
 
 .signature {
+   /*  position: absolute;
+  
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;*/
     border: 2px dotted #CCCCCC;
-    border-radius: 15px;
+    border-radius: 1px;
     cursor: crosshair;
+
+    /*height:56.25vmin;*/
+
+    padding:0;
+    margin:0;
+}
+
+.spad {
+    padding: 0;
+    margin: auto;
+    /*width: 100%;*/
+    /*height: 100%;*/
+    /* display: block;
+    aspect-ratio: 16/7;
+    position: relative;*/
+    /* position: relative;
+    padding-top: 1px;
+    padding-bottom: 56.25%;    
+    height: 0;*/
+    /*border: 1px solid red;*/
 }
